@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh77o68tj6ij2"]
+
+[ext_resource type="Script" path="res://Escenas/PantallaInicio/ParallaxBackground.gd" id="1_odr0l"]
+[ext_resource type="Texture2D" uid="uid://d075qe2ul21tq" path="res://Assets/Fondos/fondo_inicio.jpg" id="2_l23vl"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_odr0l")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="FondoInicio" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(27, -223)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_l23vl")
+region_rect = Rect2(0, 0, 3000, 3000)

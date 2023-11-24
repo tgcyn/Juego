@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cho8lfm61rw0v"]
+
+[ext_resource type="Texture2D" uid="uid://2mgkrivbfcru" path="res://Assets/Personajes/bruja.png" id="1_sjew0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdhdo"]
+size = Vector2(73, 130)
+
+[node name="Bruja" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(598.5, 253)
+shape = SubResource("RectangleShape2D_cdhdo")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(598.25, 252.25)
+scale = Vector2(0.0392232, 0.03768)
+texture = ExtResource("1_sjew0")

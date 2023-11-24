@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://ggpb86bcvgot"]
+
+[ext_resource type="Texture2D" uid="uid://b1lx2gprxj5aa" path="res://Assets/Fondos/fondo_pasillo.webp" id="1_d8s45"]
+[ext_resource type="PackedScene" uid="uid://cho8lfm61rw0v" path="res://Escenas/Escena1/bruja_inicio.tscn" id="1_jvvye"]
+[ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_rd5xa"]
+[ext_resource type="PackedScene" uid="uid://dce8jkd8abrhp" path="res://Escenas/Escena1/conversacion.tscn" id="4_5gg4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru7ep"]
+size = Vector2(660, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udurg"]
+size = Vector2(29, 391)
+
+[node name="intro" type="Node"]
+
+[node name="FondoPasillo" type="Sprite2D" parent="."]
+position = Vector2(322, 180.538)
+scale = Vector2(1.08, 1.05912)
+texture = ExtResource("1_d8s45")
+
+[node name="Bruja" parent="." instance=ExtResource("1_jvvye")]
+position = Vector2(-280, 1)
+
+[node name="jugador" parent="." instance=ExtResource("3_rd5xa")]
+position = Vector2(-105, 291)
+
+[node name="Caja de colision" type="Node" parent="."]
+
+[node name="Suelo" type="StaticBody2D" parent="Caja de colision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colision/Suelo"]
+position = Vector2(320, 346.5)
+shape = SubResource("RectangleShape2D_ru7ep")
+
+[node name="Techo" type="StaticBody2D" parent="Caja de colision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colision/Techo"]
+position = Vector2(319, 22)
+shape = SubResource("RectangleShape2D_ru7ep")
+
+[node name="Derecha" type="StaticBody2D" parent="Caja de colision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colision/Derecha"]
+position = Vector2(641, 178)
+shape = SubResource("RectangleShape2D_udurg")
+
+[node name="Izquierda" type="StaticBody2D" parent="Caja de colision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colision/Izquierda"]
+position = Vector2(-12, 178)
+shape = SubResource("RectangleShape2D_udurg")
+
+[node name="Conversacion" parent="." instance=ExtResource("4_5gg4k")]
+visible = false
+
+[connection signal="body_entered" from="Bruja" to="Conversacion" method="_on_bruja_body_entered"]

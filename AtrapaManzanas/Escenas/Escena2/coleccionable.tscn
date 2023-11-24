@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj8b8nc7bdrxm"]
+
+[ext_resource type="Script" path="res://Escenas/Escena2/coleccionable.gd" id="1_3tluc"]
+[ext_resource type="Texture2D" uid="uid://c7rde4hex70an" path="res://Assets/Objetos/manzana.png" id="2_nod8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iux0"]
+size = Vector2(24, 24)
+
+[sub_resource type="GDScript" id="GDScript_8a4gd"]
+script/source = "extends Sprite2D
+
+func _on_body_entered(body):
+	if body.is_in_group(\"Jugador\"):
+		body.subirScore()
+"
+
+[node name="Coleccionable" type="Area2D"]
+script = ExtResource("1_3tluc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_6iux0")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nod8b")
+script = SubResource("GDScript_8a4gd")
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="Sprite" method="_on_coleccionable_body_entered"]

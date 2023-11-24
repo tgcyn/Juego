@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://dce8jkd8abrhp"]
+
+[ext_resource type="Script" path="res://Escenas/Escena1/conversacion.gd" id="1_nrf4e"]
+[ext_resource type="Texture2D" uid="uid://dopilt1wbgnkx" path="res://icon.svg" id="2_a70l8"]
+[ext_resource type="Texture2D" uid="uid://cqsksmj448rpd" path="res://Assets/Objetos/flecha siguiente.png" id="2_mefof"]
+
+[sub_resource type="Animation" id="Animation_tvs3l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texto:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l7i4o"]
+resource_name = "visualizar_texto"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texto:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_td8xa"]
+_data = {
+"RESET": SubResource("Animation_tvs3l"),
+"visualizar_texto": SubResource("Animation_l7i4o")
+}
+
+[node name="Conversacion" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_nrf4e")
+
+[node name="Fondo" type="ColorRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -65.0
+offset_right = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.768627, 0.827451, 1, 0.694118)
+
+[node name="Imagen" type="TextureRect" parent="."]
+offset_left = 39.0
+offset_top = 295.0
+offset_right = 100.0
+offset_bottom = 360.0
+texture = ExtResource("2_a70l8")
+expand_mode = 1
+
+[node name="Cuadro" type="ReferenceRect" parent="."]
+offset_top = -1.0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Texto" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 102.0
+offset_top = 295.0
+offset_right = 555.018
+offset_bottom = 359.0
+theme_override_font_sizes/font_size = 16
+text = "Probando, esto es solo una prueba para ver si funciona con frases más largas y de más de una linea"
+autowrap_mode = 2
+max_lines_visible = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Boton" type="Button" parent="."]
+offset_left = 562.0
+offset_top = 335.0
+offset_right = 583.0
+offset_bottom = 355.0
+icon = ExtResource("2_mefof")
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.75
+libraries = {
+"": SubResource("AnimationLibrary_td8xa")
+}
+
+[connection signal="pressed" from="Boton" to="." method="_on_boton_pressed"]

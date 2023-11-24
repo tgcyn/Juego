@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://biac4odpokajf"]
+
+[ext_resource type="Script" path="res://Escenas/Escena2/game.gd" id="1_psq80"]
+[ext_resource type="Texture2D" uid="uid://gm3dvfrkhsge" path="res://Assets/Fondos/bosque.png" id="2_0xyp3"]
+[ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_nphr1"]
+[ext_resource type="PackedScene" uid="uid://qguum585yfxt" path="res://Escenas/Escena2/spawner.tscn" id="4_j7vj5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1gq42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3dfv"]
+size = Vector2(1587.5, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qwd4"]
+size = Vector2(31, 351)
+
+[sub_resource type="LabelSettings" id="LabelSettings_duqlo"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_r7kdn"]
+font_size = 32
+font_color = Color(1, 0, 0.0166664, 1)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_psq80")
+
+[node name="Bosque" type="Sprite2D" parent="."]
+position = Vector2(315, 181)
+scale = Vector2(0.514062, 0.502778)
+texture = ExtResource("2_0xyp3")
+
+[node name="Jugador" parent="." instance=ExtResource("3_nphr1")]
+position = Vector2(135, 295)
+
+[node name="Caja de colisión" type="Node" parent="."]
+
+[node name="Fondo" type="StaticBody2D" parent="Caja de colisión"]
+physics_material_override = SubResource("PhysicsMaterial_1gq42")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colisión/Fondo"]
+position = Vector2(322, 348)
+shape = SubResource("RectangleShape2D_r3dfv")
+
+[node name="Techo" type="StaticBody2D" parent="Caja de colisión"]
+physics_material_override = SubResource("PhysicsMaterial_1gq42")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colisión/Techo"]
+position = Vector2(316, -9)
+shape = SubResource("RectangleShape2D_r3dfv")
+
+[node name="Borde izquierdo" type="StaticBody2D" parent="Caja de colisión"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colisión/Borde izquierdo"]
+position = Vector2(-11, 170)
+shape = SubResource("RectangleShape2D_8qwd4")
+
+[node name="Borde derecho" type="StaticBody2D" parent="Caja de colisión"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja de colisión/Borde derecho"]
+position = Vector2(654, 171)
+shape = SubResource("RectangleShape2D_8qwd4")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Spawner4" parent="Items" instance=ExtResource("4_j7vj5")]
+texture_filter = 1
+position = Vector2(98, 46)
+
+[node name="Spawner" parent="Items" instance=ExtResource("4_j7vj5")]
+texture_filter = 1
+position = Vector2(549, 46)
+
+[node name="Spawner2" parent="Items" instance=ExtResource("4_j7vj5")]
+texture_filter = 1
+position = Vector2(393, 46)
+
+[node name="Spawner3" parent="Items" instance=ExtResource("4_j7vj5")]
+texture_filter = 1
+position = Vector2(248, 46)
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 68.0
+offset_bottom = 54.0
+text = "0"
+label_settings = SubResource("LabelSettings_duqlo")
+
+[node name="DeathScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="MsjMuerte" type="Label" parent="DeathScreen"]
+offset_left = 229.0
+offset_top = 152.0
+offset_right = 412.0
+offset_bottom = 200.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_r7kdn")
+
+[node name="PuntuacionFinal" type="HBoxContainer" parent="DeathScreen"]
+offset_left = 284.0
+offset_top = 201.0
+offset_right = 350.0
+offset_bottom = 227.0
+
+[node name="Label" type="Label" parent="DeathScreen/PuntuacionFinal"]
+layout_mode = 2
+text = "Score: "
+
+[node name="Label2" type="Label" parent="DeathScreen/PuntuacionFinal"]
+layout_mode = 2
+text = "0"

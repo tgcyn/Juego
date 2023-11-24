@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvropq54vjqyp"]
+
+[ext_resource type="Script" path="res://Escenas/PantallaInicio/Menu.gd" id="1_c274f"]
+[ext_resource type="PackedScene" uid="uid://dh77o68tj6ij2" path="res://Escenas/PantallaInicio/parallax_background.tscn" id="2_twg2h"]
+
+[sub_resource type="FontFile" id="FontFile_5ug16"]
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/64/0/kerning_overrides/64/0 = Vector2(0, 0)
+cache/0/64/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/64/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="FontFile_yabvy"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/64/0 = Vector2(0, 0)
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/64/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/64/0/kerning_overrides/64/0 = Vector2(0, 0)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c274f")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_twg2h")]
+
+[node name="Titulo" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -238.0
+offset_top = 62.0
+offset_right = 239.0
+offset_bottom = 152.0
+grow_horizontal = 2
+
+[node name="Atrapa" type="Label" parent="Titulo"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_5ug16")
+theme_override_font_sizes/font_size = 64
+text = "Atrapa"
+
+[node name="Manzanas" type="Label" parent="Titulo"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_yabvy")
+theme_override_font_sizes/font_size = 64
+text = "Manzanas"
+
+[node name="Botones" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -112.0
+offset_right = 102.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Jugar" type="Button" parent="Botones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "  JUGAR  "
+
+[node name="Salir" type="Button" parent="Botones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "  SALIR  "
+
+[connection signal="pressed" from="Botones/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="Botones/Salir" to="." method="_on_salir_pressed"]
