@@ -15,4 +15,4 @@ func subirScore():
 func morir():
 	$DeathScreen/PuntuacionFinal/Label2.text = str(scoreJugador)
 	$DeathScreen.show()
-	get_tree().paused = true #esto es para congelar la escena una vez se muestre el mensaje
+	

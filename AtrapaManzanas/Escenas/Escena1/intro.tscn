@@ -53,4 +53,12 @@ shape = SubResource("RectangleShape2D_udurg")
 [node name="Conversacion" parent="." instance=ExtResource("4_5gg4k")]
 visible = false
 
+[node name="Label" type="Label" parent="."]
+offset_left = 165.0
+offset_top = 12.0
+offset_right = 466.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 24
+text = "Misión: Habla con la bruja"
+
 [connection signal="body_entered" from="Bruja" to="Conversacion" method="_on_bruja_body_entered"]
