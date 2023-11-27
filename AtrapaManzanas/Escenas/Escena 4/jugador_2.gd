@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed := 200
+var speed := 250
 @onready var animated_sprite_2d = $AnimatedSprite2D
 signal scoreUp
 signal playerDied

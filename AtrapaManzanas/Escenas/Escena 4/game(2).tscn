@@ -9,7 +9,6 @@
 size = Vector2(23, 383)
 
 [node name="game(2)" type="Node"]
-process_mode = 3
 script = ExtResource("1_u7o3c")
 
 [node name="BosqueOscuro" type="Sprite2D" parent="."]
