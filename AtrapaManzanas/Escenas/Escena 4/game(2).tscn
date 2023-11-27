@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck5q0pmiqxe15"]
+[gd_scene load_steps=7 format=3 uid="uid://ck5q0pmiqxe15"]
 
 [ext_resource type="PackedScene" uid="uid://4olofyowivs7" path="res://Escenas/Escena 4/jugador_2.tscn" id="1_cgnvm"]
 [ext_resource type="Texture2D" uid="uid://d4nrjr7i78yhe" path="res://Assets/Fondos/bosque_oscuro.jpg" id="1_qodao"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rsw1"]
 size = Vector2(23, 383)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsy3u"]
+size = Vector2(660, 20)
 
 [node name="game(2)" type="Node"]
 script = ExtResource("1_u7o3c")
@@ -32,6 +35,12 @@ shape = SubResource("RectangleShape2D_8rsw1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Derecha"]
 position = Vector2(629, 179)
 shape = SubResource("RectangleShape2D_8rsw1")
+
+[node name="Fondo" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Fondo"]
+position = Vector2(314, 352)
+shape = SubResource("RectangleShape2D_vsy3u")
 
 [node name="Items" type="Node" parent="."]
 

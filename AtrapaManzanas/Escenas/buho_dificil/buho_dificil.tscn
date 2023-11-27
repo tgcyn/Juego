@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://s0vo61i8p47p"]
+
+[ext_resource type="Texture2D" uid="uid://d4nrjr7i78yhe" path="res://Assets/Fondos/bosque_oscuro.jpg" id="1_qs2o0"]
+[ext_resource type="PackedScene" uid="uid://4olofyowivs7" path="res://Escenas/Escena 4/jugador_2.tscn" id="2_vravu"]
+[ext_resource type="Texture2D" uid="uid://d3bineeqye7uh" path="res://Assets/Objetos/birrete.png" id="3_jlf80"]
+[ext_resource type="PackedScene" uid="uid://dce8jkd8abrhp" path="res://Escenas/Escena1/conversacion.tscn" id="4_qow2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a37y3"]
+size = Vector2(20, 383)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fogkp"]
+size = Vector2(657, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppfxc"]
+size = Vector2(26, 20)
+
+[node name="buho_dificl" type="Node"]
+
+[node name="BosqueOscuro" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(1.42667, 1.20667)
+texture = ExtResource("1_qs2o0")
+
+[node name="jugador_2" parent="." instance=ExtResource("2_vravu")]
+position = Vector2(574, 39)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Derecha" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Derecha"]
+position = Vector2(635, 174)
+shape = SubResource("RectangleShape2D_a37y3")
+
+[node name="Izquierda" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Izquierda"]
+position = Vector2(4, 180)
+shape = SubResource("RectangleShape2D_a37y3")
+
+[node name="Fondo" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Fondo"]
+position = Vector2(324, 350)
+shape = SubResource("RectangleShape2D_fogkp")
+
+[node name="Buho_2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buho_2"]
+position = Vector2(73, 78)
+shape = SubResource("RectangleShape2D_ppfxc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Buho_2"]
+position = Vector2(73, 78.0001)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_jlf80")
+
+[node name="Conversacion" parent="." instance=ExtResource("4_qow2f")]
+visible = false
+
+[connection signal="body_entered" from="Buho_2" to="Conversacion" method="_on_buho_2_body_entered"]

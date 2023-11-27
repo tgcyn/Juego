@@ -35,6 +35,14 @@ animations = [{
 "loop": true,
 "name": &"caminar",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_38lsq")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
 }]
 
 [node name="jugador_2" type="CharacterBody2D" groups=["Jugador2"]]
@@ -49,4 +57,4 @@ shape = SubResource("RectangleShape2D_os08y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7gfvt")
-animation = &"caminar"
+animation = &"quieto"

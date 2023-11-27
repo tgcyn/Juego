@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-enum PERS {Bruja, Buho} #le asigna un valor a cada uno de los personajes para poder trabajar con ellos como numeros
+enum PERS {Bruja, Buho, Buho_2} #le asigna un valor a cada uno de los personajes para poder trabajar con ellos como numeros
 
 # imagenes q aparecen en el cuadro al hablar
 const IMA : Dictionary = {
@@ -30,6 +30,19 @@ const TEX_Buho : Array = [
 	'Mucha suerte'
 ]
 
+const TEX_Buho_2 : Array = [
+	'Buho: Buenos días joven
+	Zorro: ¿Qué ha pasado? ¿Por qué soy un ratón?',
+	'Buho: Oh, es cosa de la bruja, para que no sea tan fácil recuperar tus cosas',
+	'Zorro: ¿Eh? ¿Quién habla?
+	Buho: Estoy en el árbol',
+	'Buho: Estas en uno de los patios del castillo de la bruja
+	Buho: Vengo a explicarte en que consiste tu misión',
+	'Buho: Tendrás que recolectar todas las manzanas que puedas',
+	'Buho: Después irás con la bruja y las intercambiarás por tus cosas',
+	'Mucha suerte, la necesitarás'
+]
+
 # comprueba q dialogo muestro de cada pesonaje
 var chats : int = 0
 # comprueba cual de los personajes esta hablando
@@ -50,10 +63,16 @@ func _on_bruja_body_entered(body):
 		poner_texto(TEX_Bruja[chats], PERS.Bruja, IMA['Bruja'])
 		chats += 1
 
-# q pasa al entrar contacto con el birrete
+# q pasa al entrar en contacto con el birrete de la escena facil
 func _on_buho_body_entered(body):
 	if body.is_in_group("Jugador"):
 		poner_texto(TEX_Buho[chats], PERS.Buho, IMA['Buho'])
+		chats += 1
+
+# q pasa al entrar en ontacto con el birrete de la escena dificil
+func _on_buho_2_body_entered(body):
+	if body.is_in_group("Jugador2"):
+		poner_texto(TEX_Buho_2[chats], PERS.Buho_2, IMA['Buho'])
 		chats += 1
 
 # q sigan pasando de texto y q pasa cnd no quedan más
@@ -78,4 +97,15 @@ func _on_boton_pressed() -> void:
 				hide()
 				get_tree().paused = false
 				get_tree().change_scene_to_file("res://Escenas/Escena2/game.tscn")
+		
+		PERS.Buho_2:
+			if chats < TEX_Buho_2.size():
+				poner_texto(TEX_Buho_2[chats], PERS.Buho_2, IMA['Buho'])
+				chats += 1
+			else:
+				chats -= TEX_Buho_2.size()
+				hide()
+				get_tree().paused = false
+				get_tree().change_scene_to_file("res://Escenas/Escena 4/game(2).tscn")
+
 
