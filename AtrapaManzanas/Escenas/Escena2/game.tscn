@@ -78,6 +78,7 @@ texture_filter = 1
 position = Vector2(248, 46)
 
 [node name="ScoreLabel" type="Label" parent="."]
+visible = false
 offset_left = 17.0
 offset_top = 17.0
 offset_right = 68.0

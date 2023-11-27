@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck5q0pmiqxe15"]
+
+[ext_resource type="PackedScene" uid="uid://4olofyowivs7" path="res://Escenas/Escena 4/jugador_2.tscn" id="1_cgnvm"]
+[ext_resource type="Texture2D" uid="uid://d4nrjr7i78yhe" path="res://Assets/Fondos/bosque_oscuro.jpg" id="1_qodao"]
+[ext_resource type="Script" path="res://Escenas/Escena 4/game(2).gd" id="1_u7o3c"]
+[ext_resource type="PackedScene" uid="uid://cwb5pp0i3d30f" path="res://Escenas/Escena 4/spawner.tscn" id="3_akx2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rsw1"]
+size = Vector2(23, 383)
+
+[node name="game(2)" type="Node"]
+process_mode = 3
+script = ExtResource("1_u7o3c")
+
+[node name="BosqueOscuro" type="Sprite2D" parent="."]
+position = Vector2(319.5, 182)
+scale = Vector2(1.42889, 1.21333)
+texture = ExtResource("1_qodao")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_cgnvm")]
+position = Vector2(322, 306)
+
+[node name="Bordes" type="Node" parent="."]
+
+[node name="Izquierda" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Izquierda"]
+position = Vector2(1.5, 181.5)
+shape = SubResource("RectangleShape2D_8rsw1")
+
+[node name="Derecha" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Derecha"]
+position = Vector2(629, 179)
+shape = SubResource("RectangleShape2D_8rsw1")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="spawner" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(458, 32)
+
+[node name="spawner2" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(562, 34)
+
+[node name="spawner3" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(357, 20)
+
+[node name="spawner4" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(256, 20)
+
+[node name="spawner5" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(153, 41)
+
+[node name="spawner6" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(32, 26)
+
+[node name="spawner7" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(201, 86)
+
+[node name="spawner8" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(508, 125)
+
+[node name="spawner9" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(90, 158)
+
+[node name="spawner10" parent="Items" instance=ExtResource("3_akx2k")]
+position = Vector2(315, 84)
+
+[node name="scoreLabel" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Muerte" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="MesjMuerte" type="Label" parent="Muerte"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 220.0
+offset_top = 155.0
+offset_right = 403.0
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 32
+text = "GAME OVER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Muerte"]
+offset_left = 277.0
+offset_top = 176.0
+offset_right = 361.0
+offset_bottom = 235.0
+
+[node name="Label" type="Label" parent="Muerte/HBoxContainer"]
+layout_mode = 2
+text = "Score: "
+
+[node name="Label2" type="Label" parent="Muerte/HBoxContainer"]
+layout_mode = 2
