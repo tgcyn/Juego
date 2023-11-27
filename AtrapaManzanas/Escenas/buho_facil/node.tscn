@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqakftsvhm6x5"]
+
+[ext_resource type="Texture2D" uid="uid://gm3dvfrkhsge" path="res://Assets/Fondos/bosque.png" id="1_wvfle"]
+[ext_resource type="Texture2D" uid="uid://d3bineeqye7uh" path="res://Assets/Objetos/birrete.png" id="2_vqo4s"]
+[ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_d3yg3"]
+[ext_resource type="PackedScene" uid="uid://dce8jkd8abrhp" path="res://Escenas/Escena1/conversacion.tscn" id="4_uk73d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3brt8"]
+size = Vector2(26, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cskho"]
+size = Vector2(659, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x23k5"]
+size = Vector2(20, 372)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp8du"]
+size = Vector2(20, 378)
+
+[node name="buho_facil" type="Node"]
+
+[node name="Bosque" type="Sprite2D" parent="."]
+position = Vector2(321, 181)
+scale = Vector2(0.503125, 0.505556)
+texture = ExtResource("1_wvfle")
+
+[node name="Buho" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buho"]
+position = Vector2(390, 254)
+shape = SubResource("RectangleShape2D_3brt8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Buho"]
+position = Vector2(390, 254)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_vqo4s")
+
+[node name="jugador" parent="." instance=ExtResource("3_d3yg3")]
+position = Vector2(-115, 96)
+
+[node name="Conversacion" parent="." instance=ExtResource("4_uk73d")]
+visible = false
+
+[node name="Bordes" type="Node" parent="."]
+
+[node name="Suelo" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Suelo"]
+position = Vector2(320, 343.5)
+shape = SubResource("RectangleShape2D_cskho")
+
+[node name="Derecha" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Derecha"]
+position = Vector2(638, 177)
+shape = SubResource("RectangleShape2D_x23k5")
+
+[node name="Izquierda" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Izquierda"]
+position = Vector2(0, 179)
+shape = SubResource("RectangleShape2D_fp8du")
+
+[connection signal="body_entered" from="Buho" to="Conversacion" method="_on_buho_body_entered"]
