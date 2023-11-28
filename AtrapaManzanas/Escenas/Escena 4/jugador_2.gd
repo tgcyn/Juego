@@ -45,3 +45,7 @@ func subirScore():
 func muerte():
 	emit_signal("playerDied")
 
+
+
+func _on_nube_2_body_entered(body):
+	pass # Replace with function body.

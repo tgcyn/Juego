@@ -75,16 +75,16 @@ rotation = 3.14159
 scale = Vector2(0.03462, 0.03)
 texture = ExtResource("5_rwsnp")
 
-[node name="Nube2" type="Area2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nube2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(294, 308)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_3xqib")
 
-[node name="Sprite2D" type="Sprite2D" parent="Nube2"]
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(293, 307)
-rotation = 3.14159
+rotation = -3.14159
 scale = Vector2(0.03462, 0.03)
 texture = ExtResource("5_rwsnp")
 
