@@ -53,12 +53,22 @@ shape = SubResource("RectangleShape2D_udurg")
 [node name="Conversacion" parent="." instance=ExtResource("4_5gg4k")]
 visible = false
 
-[node name="Label" type="Label" parent="."]
-offset_left = 165.0
-offset_top = 12.0
-offset_right = 466.0
-offset_bottom = 49.0
-theme_override_font_sizes/font_size = 24
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 414.0
+offset_top = 8.0
+offset_right = 623.0
+offset_bottom = 48.0
+color = Color(1, 1, 1, 0.584314)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 418.0
+offset_top = 17.0
+offset_right = 618.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 16
 text = "Misión: Habla con la bruja"
 
 [connection signal="body_entered" from="Bruja" to="Conversacion" method="_on_bruja_body_entered"]
