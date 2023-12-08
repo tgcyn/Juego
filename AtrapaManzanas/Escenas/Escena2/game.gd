@@ -31,8 +31,6 @@ func _on_repetir_pressed():
 func _on_continuar_pressed():
 	get_tree().paused = false
 	if scoreJugador >= 10:
-		emit_signal("winner")
 		get_tree().change_scene_to_file("res://Escenas/Escena_Final/final.tscn")
 	else:
-		emit_signal("looser")
-		get_tree().change_scene_to_file("res://Escenas/Escena_Final/final.tscn")
+		get_tree().change_scene_to_file("res://Escenas/Escena_Final/final_perder.tscn")
