@@ -153,7 +153,6 @@ wait_time = 30.0
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-process_mode = 3
 stream = ExtResource("6_eow7g")
 volume_db = 1.68
 autoplay = true
