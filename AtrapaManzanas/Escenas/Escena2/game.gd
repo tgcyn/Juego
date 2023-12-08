@@ -16,3 +16,10 @@ func morir():
 	$DeathScreen/PuntuacionFinal/Label2.text = str(scoreJugador)
 	$DeathScreen.show()
 	get_tree().paused = true
+
+
+func _on_timer_timeout():
+	$DeathScreen/PuntuacionFinal/Label2.text = str(scoreJugador)
+	$DeathScreen.show()
+	get_tree().paused = true
+	pass # Replace with function body.

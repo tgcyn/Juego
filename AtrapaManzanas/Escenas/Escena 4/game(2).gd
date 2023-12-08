@@ -17,3 +17,7 @@ func morir():
 	$Muerte.show()
 	get_tree().paused = true
 	
+
+
+func _on_final_pressed():
+	get_tree().quit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://s0vo61i8p47p"]
+[gd_scene load_steps=12 format=3 uid="uid://s0vo61i8p47p"]
 
 [ext_resource type="Texture2D" uid="uid://d4nrjr7i78yhe" path="res://Assets/Fondos/bosque_oscuro.jpg" id="1_qs2o0"]
 [ext_resource type="PackedScene" uid="uid://4olofyowivs7" path="res://Escenas/Escena 4/jugador_2.tscn" id="2_vravu"]
@@ -16,7 +16,11 @@ size = Vector2(657, 20)
 size = Vector2(26, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xqib"]
-size = Vector2(68, 24)
+size = Vector2(55, 9.25)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xeji0"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_u0h7f"]
 
 [node name="buho_dificl" type="Node"]
 
@@ -28,24 +32,30 @@ texture = ExtResource("1_qs2o0")
 [node name="jugador_2" parent="." instance=ExtResource("2_vravu")]
 position = Vector2(574, 39)
 
-[node name="Node" type="Node" parent="."]
+[node name="Bordes" type="Node" parent="."]
 
-[node name="Derecha" type="StaticBody2D" parent="Node"]
+[node name="Derecha" type="StaticBody2D" parent="Bordes"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Derecha"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Derecha"]
 position = Vector2(635, 174)
 shape = SubResource("RectangleShape2D_a37y3")
 
-[node name="Izquierda" type="StaticBody2D" parent="Node"]
+[node name="Izquierda" type="StaticBody2D" parent="Bordes"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Izquierda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Izquierda"]
 position = Vector2(4, 180)
 shape = SubResource("RectangleShape2D_a37y3")
 
-[node name="Fondo" type="StaticBody2D" parent="Node"]
+[node name="Fondo" type="StaticBody2D" parent="Bordes"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Fondo"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Fondo"]
 position = Vector2(324, 350)
+shape = SubResource("RectangleShape2D_fogkp")
+
+[node name="Techo" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Techo"]
+position = Vector2(320, -8)
 shape = SubResource("RectangleShape2D_fogkp")
 
 [node name="Buho_2" type="Area2D" parent="."]
@@ -62,30 +72,161 @@ texture = ExtResource("3_jlf80")
 [node name="Conversacion" parent="." instance=ExtResource("4_qow2f")]
 visible = false
 
-[node name="Nube" type="Area2D" parent="."]
+[node name="Nubes" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nube"]
-position = Vector2(201, 181)
-rotation = -3.14159
-shape = SubResource("RectangleShape2D_3xqib")
+[node name="StaticBody2D" type="StaticBody2D" parent="Nubes"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Nube"]
-position = Vector2(200, 179)
-rotation = 3.14159
-scale = Vector2(0.03462, 0.03)
-texture = ExtResource("5_rwsnp")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D"]
 position = Vector2(294, 308)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_3xqib")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D"]
 position = Vector2(293, 307)
 rotation = -3.14159
 scale = Vector2(0.03462, 0.03)
 texture = ExtResource("5_rwsnp")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Nubes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D2"]
+position = Vector2(205, 261)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_3xqib")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D2"]
+position = Vector2(205, 266)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Nubes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D3"]
+position = Vector2(338, 234)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_3xqib")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D3"]
+position = Vector2(338, 236)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Nubes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D4"]
+position = Vector2(229, 183)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_3xqib")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D4"]
+position = Vector2(230, 188)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Nubes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D5"]
+position = Vector2(341, 141)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_3xqib")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D5"]
+position = Vector2(340, 147)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Nubes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D6"]
+position = Vector2(261, 90)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_3xqib")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D6"]
+position = Vector2(264, 94)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Nubes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D7"]
+position = Vector2(184, 54)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_3xqib")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D7"]
+position = Vector2(183, 47)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Nubes"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D8"]
+position = Vector2(118, 156)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D8"]
+shape = SubResource("SegmentShape2D_xeji0")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Nubes"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D10"]
+position = Vector2(405, 56)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D10"]
+shape = SubResource("SegmentShape2D_xeji0")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Nubes"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D11"]
+position = Vector2(501, 231)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D11"]
+shape = SubResource("SegmentShape2D_xeji0")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Nubes"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes/StaticBody2D9"]
+position = Vector2(447, 177)
+rotation = -3.14159
+scale = Vector2(0.03462, 0.03)
+texture = ExtResource("5_rwsnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nubes/StaticBody2D9"]
+shape = SubResource("SegmentShape2D_u0h7f")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.52549)
+offset_left = 496.0
+offset_top = 3.0
+offset_right = 625.0
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+offset_left = 500.0
+offset_top = 6.0
+offset_right = 625.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = "Misión: Habla con el búho"
 
 [connection signal="body_entered" from="Buho_2" to="Conversacion" method="_on_buho_2_body_entered"]
