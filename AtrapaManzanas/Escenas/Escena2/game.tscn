@@ -167,6 +167,7 @@ position = Vector2(181, 96)
 position = Vector2(483, 91)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_5if3f")
 autoplay = true
 
