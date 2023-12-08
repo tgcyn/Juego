@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bniofmy8ge3pt"
+path="res://.godot/imported/Música relajante para cabezas vacías.mp3-dd67e83a2a7e6ef6218787f795779706.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sonidos/Música relajante para cabezas vacías.mp3"
+dest_files=["res://.godot/imported/Música relajante para cabezas vacías.mp3-dd67e83a2a7e6ef6218787f795779706.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
