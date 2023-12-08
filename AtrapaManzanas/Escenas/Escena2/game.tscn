@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://biac4odpokajf"]
+[gd_scene load_steps=11 format=3 uid="uid://biac4odpokajf"]
 
 [ext_resource type="Script" path="res://Escenas/Escena2/game.gd" id="1_psq80"]
 [ext_resource type="Texture2D" uid="uid://gm3dvfrkhsge" path="res://Assets/Fondos/bosque.png" id="2_0xyp3"]
 [ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_nphr1"]
 [ext_resource type="PackedScene" uid="uid://qguum585yfxt" path="res://Escenas/Escena2/spawner.tscn" id="4_j7vj5"]
+[ext_resource type="Texture2D" uid="uid://dhfekebvi2xuw" path="res://Assets/Objetos/pergamino.png" id="5_apnmf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1gq42"]
 
@@ -112,9 +113,58 @@ text = "Score: "
 layout_mode = 2
 text = "0"
 
+[node name="Pergamino" type="Sprite2D" parent="DeathScreen"]
+position = Vector2(308.5, 296)
+scale = Vector2(0.435, 0.155782)
+texture = ExtResource("5_apnmf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -92.0
+offset_right = -129.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Repetir" type="Button" parent="DeathScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Repetir"
+
+[node name="Continuar" type="Button" parent="DeathScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Continuar"
+
+[node name="Label" type="Label" parent="DeathScreen"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+offset_left = 113.0
+offset_top = 268.0
+offset_right = 408.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 12
+text = "Tienes ahora la posibilidad de continuar o de tener 
+una segunda oportunidad en este nivel, pero si 
+decides tomarla, perderás los items obtenidos"
+horizontal_alignment = 1
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
+[node name="Spawner" parent="." instance=ExtResource("4_j7vj5")]
+position = Vector2(181, 96)
+
+[node name="Spawner2" parent="." instance=ExtResource("4_j7vj5")]
+position = Vector2(483, 91)
+
+[connection signal="pressed" from="DeathScreen/VBoxContainer/Repetir" to="." method="_on_repetir_pressed"]
+[connection signal="pressed" from="DeathScreen/VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

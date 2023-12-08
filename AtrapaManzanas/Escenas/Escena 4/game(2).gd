@@ -15,9 +15,13 @@ func subirScore():
 func morir():
 	$Muerte/HBoxContainer/Label2.text = str(scoreJugador)
 	$Muerte.show()
-	get_tree().paused = true
-	
 
+func _on_timer_timeout():
+	$Muerte/HBoxContainer/Label2.text = str(scoreJugador)
+	$Muerte.show()
 
-func _on_final_pressed():
-	get_tree().quit()
+func _on_repetir_pressed():
+	get_tree().change_scene_to_file("res://Escenas/Escena 4/game(2).tscn")
+
+func _on_continuar_pressed():
+	print("pulse continuar")

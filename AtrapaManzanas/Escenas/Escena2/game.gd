@@ -17,9 +17,14 @@ func morir():
 	$DeathScreen.show()
 	get_tree().paused = true
 
-
 func _on_timer_timeout():
 	$DeathScreen/PuntuacionFinal/Label2.text = str(scoreJugador)
 	$DeathScreen.show()
 	get_tree().paused = true
+
+func _on_repetir_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Escenas/Escena2/game.tscn")
+
+func _on_continuar_pressed():
 	pass # Replace with function body.

@@ -5,18 +5,6 @@ signal scoreUp #creo una señal para poder hacer referencia a ella en otro scrip
 signal playerDied
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-func _ready():
-	pass
-	
-func _process(delta):
-	pass
-
-func _input(event):
-	pass
-	
-func _init():
-	pass
-	
 func _physics_process(delta):
 	# esto es para cuando realice un movimiento de izquierda a derecha
 	var right_left = Input.get_axis("ui_left", "ui_right")

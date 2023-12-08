@@ -5,18 +5,6 @@ var speed := 250
 signal scoreUp
 signal playerDied
 
-func _ready():
-	pass
-	
-func _process(delta):
-	pass
-
-func _input(event):
-	pass
-	
-func _init():
-	pass
-	
 func _physics_process(delta):
 	var right_left = Input.get_axis("ui_left", "ui_right")
 	
@@ -44,8 +32,3 @@ func subirScore():
 	
 func muerte():
 	emit_signal("playerDied")
-
-
-
-func _on_nube_2_body_entered(body):
-	pass # Replace with function body.
