@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dce8jkd8abrhp"]
+[gd_scene load_steps=8 format=3 uid="uid://dce8jkd8abrhp"]
 
 [ext_resource type="Script" path="res://Escenas/Escena1/conversacion.gd" id="1_nrf4e"]
 [ext_resource type="Texture2D" uid="uid://dopilt1wbgnkx" path="res://icon.svg" id="2_a70l8"]
 [ext_resource type="Texture2D" uid="uid://cqsksmj448rpd" path="res://Assets/Objetos/flecha siguiente.png" id="2_mefof"]
+[ext_resource type="AudioStream" uid="uid://jn830guvyw0w" path="res://Assets/Sonidos/mario-grabish-14183.mp3" id="4_u561o"]
 
 [sub_resource type="Animation" id="Animation_tvs3l"]
 length = 0.001
@@ -96,5 +97,8 @@ speed_scale = 0.75
 libraries = {
 "": SubResource("AnimationLibrary_td8xa")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_u561o")
 
 [connection signal="pressed" from="Boton" to="." method="_on_boton_pressed"]

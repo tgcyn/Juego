@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://biac4odpokajf"]
+[gd_scene load_steps=12 format=3 uid="uid://biac4odpokajf"]
 
 [ext_resource type="Script" path="res://Escenas/Escena2/game.gd" id="1_psq80"]
 [ext_resource type="Texture2D" uid="uid://gm3dvfrkhsge" path="res://Assets/Fondos/bosque.png" id="2_0xyp3"]
 [ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_nphr1"]
 [ext_resource type="PackedScene" uid="uid://qguum585yfxt" path="res://Escenas/Escena2/spawner.tscn" id="4_j7vj5"]
 [ext_resource type="Texture2D" uid="uid://dhfekebvi2xuw" path="res://Assets/Objetos/pergamino.png" id="5_apnmf"]
+[ext_resource type="AudioStream" uid="uid://0mq64wpgqnhf" path="res://Assets/Sonidos/Musica de Super Mario Bros. - Tema Principal.mp3" id="6_5if3f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1gq42"]
 
@@ -164,6 +165,10 @@ position = Vector2(181, 96)
 
 [node name="Spawner2" parent="." instance=ExtResource("4_j7vj5")]
 position = Vector2(483, 91)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5if3f")
+autoplay = true
 
 [connection signal="pressed" from="DeathScreen/VBoxContainer/Repetir" to="." method="_on_repetir_pressed"]
 [connection signal="pressed" from="DeathScreen/VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]

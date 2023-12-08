@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck5q0pmiqxe15"]
+[gd_scene load_steps=9 format=3 uid="uid://ck5q0pmiqxe15"]
 
 [ext_resource type="PackedScene" uid="uid://4olofyowivs7" path="res://Escenas/Escena 4/jugador_2.tscn" id="1_cgnvm"]
 [ext_resource type="Texture2D" uid="uid://d4nrjr7i78yhe" path="res://Assets/Fondos/bosque_oscuro.jpg" id="1_qodao"]
 [ext_resource type="Script" path="res://Escenas/Escena 4/game(2).gd" id="1_u7o3c"]
 [ext_resource type="PackedScene" uid="uid://cwb5pp0i3d30f" path="res://Escenas/Escena 4/spawner.tscn" id="3_akx2k"]
 [ext_resource type="Texture2D" uid="uid://dhfekebvi2xuw" path="res://Assets/Objetos/pergamino.png" id="5_2scem"]
+[ext_resource type="AudioStream" uid="uid://0mq64wpgqnhf" path="res://Assets/Sonidos/Musica de Super Mario Bros. - Tema Principal.mp3" id="6_eow7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rsw1"]
 size = Vector2(23, 383)
@@ -150,6 +151,11 @@ text = "Continuar
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_eow7g")
+volume_db = 1.68
+autoplay = true
 
 [connection signal="pressed" from="Muerte/VBoxContainer/Repetir" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Muerte/VBoxContainer/Repetir" to="." method="_on_repetir_pressed"]

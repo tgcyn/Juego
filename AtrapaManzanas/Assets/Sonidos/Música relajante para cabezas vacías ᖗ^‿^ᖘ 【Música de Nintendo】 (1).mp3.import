@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfkipemka8ssl"
+path="res://.godot/imported/Música relajante para cabezas vacías ᖗ^‿^ᖘ 【Música de Nintendo】 (1).mp3-b5fb7ffd41b36e3378bdfef62b54fa1b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sonidos/Música relajante para cabezas vacías ᖗ^‿^ᖘ 【Música de Nintendo】 (1).mp3"
+dest_files=["res://.godot/imported/Música relajante para cabezas vacías ᖗ^‿^ᖘ 【Música de Nintendo】 (1).mp3-b5fb7ffd41b36e3378bdfef62b54fa1b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://7amghpar635d"]
+[gd_scene load_steps=10 format=3 uid="uid://7amghpar635d"]
 
 [ext_resource type="Texture2D" uid="uid://b1lx2gprxj5aa" path="res://Assets/Fondos/fondo_pasillo.webp" id="1_f7ol3"]
 [ext_resource type="PackedScene" uid="uid://cho8lfm61rw0v" path="res://Escenas/Escena1/bruja_inicio.tscn" id="2_3bbtq"]
 [ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_2037y"]
 [ext_resource type="Texture2D" uid="uid://bdqfnuirynm85" path="res://Assets/Objetos/cuadrado.png" id="4_34sjh"]
 [ext_resource type="PackedScene" uid="uid://dce8jkd8abrhp" path="res://Escenas/Escena1/conversacion.tscn" id="5_1p08n"]
+[ext_resource type="AudioStream" uid="uid://ihm6ccgjunxu" path="res://Assets/Sonidos/Abuse in the Orphanage ¦ música de terror sin copyright.mp3" id="6_oagvu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wy0bb"]
 size = Vector2(663, 20)
@@ -62,5 +63,10 @@ texture = ExtResource("4_34sjh")
 
 [node name="Conversacion" parent="." instance=ExtResource("5_1p08n")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_oagvu")
+autoplay = true
 
 [connection signal="body_entered" from="bruja_3" to="Conversacion" method="_on_bruja_3_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwwb4jmdtdv0d"
+path="res://.godot/imported/Super Mario Bros - game over song_mav6BXbQQJg.mp3-7f22c1c3a9f5bd1dc6d0524a76960472.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sonidos/Super Mario Bros - game over song_mav6BXbQQJg.mp3"
+dest_files=["res://.godot/imported/Super Mario Bros - game over song_mav6BXbQQJg.mp3-7f22c1c3a9f5bd1dc6d0524a76960472.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

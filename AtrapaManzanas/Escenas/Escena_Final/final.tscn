@@ -1,13 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdyf0qrabnwuo"]
+[gd_scene load_steps=13 format=3 uid="uid://cdyf0qrabnwuo"]
 
 [ext_resource type="Texture2D" uid="uid://b1lx2gprxj5aa" path="res://Assets/Fondos/fondo_pasillo.webp" id="1_uh1tc"]
-[ext_resource type="Script" path="res://Escenas/Escena_Final/final.gd" id="1_ye77c"]
 [ext_resource type="PackedScene" uid="uid://cho8lfm61rw0v" path="res://Escenas/Escena1/bruja_inicio.tscn" id="2_7jcmu"]
 [ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_b454b"]
 [ext_resource type="Texture2D" uid="uid://bdqfnuirynm85" path="res://Assets/Objetos/cuadrado.png" id="5_egxle"]
 [ext_resource type="PackedScene" uid="uid://dce8jkd8abrhp" path="res://Escenas/Escena1/conversacion.tscn" id="6_bblsv"]
 [ext_resource type="PackedScene" uid="uid://ev6kgnx30y7g" path="res://Escenas/Escena_Final/ganar.tscn" id="7_fuqjf"]
 [ext_resource type="PackedScene" uid="uid://ch043axu6id23" path="res://Escenas/Escena_Final/perder.tscn" id="8_mgqfk"]
+[ext_resource type="AudioStream" uid="uid://ihm6ccgjunxu" path="res://Assets/Sonidos/Abuse in the Orphanage ¦ música de terror sin copyright.mp3" id="8_ns1uu"]
+
+[sub_resource type="GDScript" id="GDScript_1f24w"]
+script/source = "extends Node
+
+@onready var jugador = $jugador
+
+func ganar():
+	$ganar.show()
+
+func perder():
+	$perder.show()
+
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcwjp"]
 size = Vector2(661, 16)
@@ -19,7 +32,7 @@ size = Vector2(20, 374)
 size = Vector2(429.078, 100.909)
 
 [node name="final" type="Node"]
-script = ExtResource("1_ye77c")
+script = SubResource("GDScript_1f24w")
 
 [node name="ganar" parent="." instance=ExtResource("7_fuqjf")]
 visible = false
@@ -79,5 +92,10 @@ texture = ExtResource("5_egxle")
 
 [node name="Conversacion" parent="." instance=ExtResource("6_bblsv")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_ns1uu")
+autoplay = true
 
 [connection signal="body_entered" from="bruja_2" to="Conversacion" method="_on_bruja_2_body_entered"]

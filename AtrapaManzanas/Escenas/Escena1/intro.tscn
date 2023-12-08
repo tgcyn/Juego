@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ggpb86bcvgot"]
+[gd_scene load_steps=8 format=3 uid="uid://ggpb86bcvgot"]
 
 [ext_resource type="Texture2D" uid="uid://b1lx2gprxj5aa" path="res://Assets/Fondos/fondo_pasillo.webp" id="1_d8s45"]
 [ext_resource type="PackedScene" uid="uid://cho8lfm61rw0v" path="res://Escenas/Escena1/bruja_inicio.tscn" id="1_jvvye"]
 [ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_rd5xa"]
 [ext_resource type="PackedScene" uid="uid://dce8jkd8abrhp" path="res://Escenas/Escena1/conversacion.tscn" id="4_5gg4k"]
+[ext_resource type="AudioStream" uid="uid://ihm6ccgjunxu" path="res://Assets/Sonidos/Abuse in the Orphanage ¦ música de terror sin copyright.mp3" id="5_5kp0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ru7ep"]
 size = Vector2(660, 59)
@@ -70,5 +71,10 @@ offset_right = 618.0
 offset_bottom = 54.0
 theme_override_font_sizes/font_size = 16
 text = "Misión: Habla con la bruja"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_5kp0m")
+autoplay = true
 
 [connection signal="body_entered" from="Bruja" to="Conversacion" method="_on_bruja_body_entered"]
