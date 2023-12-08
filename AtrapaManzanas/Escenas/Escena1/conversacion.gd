@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-enum PERS {Bruja, Buho, Buho_2} #le asigna un valor a cada uno de los personajes para poder trabajar con ellos como numeros
+enum PERS {Bruja, Buho, Buho_2, Bruja_2, Bruja_3} #le asigna un valor a cada uno de los personajes para poder trabajar con ellos como numeros
 
 # imagenes q aparecen en el cuadro al hablar
 const IMA : Dictionary = {
@@ -43,6 +43,20 @@ const TEX_Buho_2 : Array = [
 	'Mucha suerte, la necesitarás'
 ]
 
+# dialogo final de la bruja
+const TEX_Bruja_2 : Array = [
+	'Bruja: Oh ya estas aquí, pensé que tardarías un poco más.
+	Zorro: Aquí tienes tus manzanas, devuélveme mis cosas',
+	'Bruja: Vamos a ver que tenemos por aquí...'
+]
+
+# dialogo final de la bruja
+const TEX_Bruja_3 : Array = [
+	'Bruja: Oh ya estas aquí, pensé que tardarías un poco más.
+	Zorro: Aquí tienes tus manzanas, devuélveme mis cosas',
+	'Bruja: Vamos a ver que tenemos por aquí...'
+]
+
 # comprueba q dialogo muestro de cada pesonaje
 var chats : int = 0
 # comprueba cual de los personajes esta hablando
@@ -69,10 +83,22 @@ func _on_buho_body_entered(body):
 		poner_texto(TEX_Buho[chats], PERS.Buho, IMA['Buho'])
 		chats += 1
 
-# q pasa al entrar en ontacto con el birrete de la escena dificil
+# q pasa al entrar en contacto con el birrete de la escena dificil
 func _on_buho_2_body_entered(body):
 	if body.is_in_group("Jugador2"):
 		poner_texto(TEX_Buho_2[chats], PERS.Buho_2, IMA['Buho'])
+		chats += 1
+
+# q pasa al entrar en contacto con la bruja del final (Gana)
+func _on_bruja_2_body_entered(body):
+	if body.is_in_group("Jugador"):
+		poner_texto(TEX_Bruja_2[chats], PERS.Bruja_2, IMA['Bruja'])
+		chats += 1
+
+# q pasa al entrar en contacto con la bruja del final (Pierde)
+func _on_bruja_3_body_entered(body):
+	if body.is_in_group("Jugador"):
+		poner_texto(TEX_Bruja_2[chats], PERS.Bruja_3, IMA['Bruja'])
 		chats += 1
 
 # q sigan pasando de texto y q pasa cnd no quedan más
@@ -107,5 +133,25 @@ func _on_boton_pressed() -> void:
 				hide()
 				get_tree().paused = false
 				get_tree().change_scene_to_file("res://Escenas/Escena 4/game(2).tscn")
+		
+		PERS.Bruja_2:
+			if chats < TEX_Bruja_2.size():
+				poner_texto(TEX_Bruja_2[chats], PERS.Bruja_2, IMA['Bruja'])
+				chats += 1
+			else: 
+				chats -= TEX_Bruja_2.size()
+				hide()
+				get_tree().paused = false
+				get_tree().change_scene_to_file("res://Escenas/Escena_Final/ganar.tscn")
+		
+		PERS.Bruja_3:
+			if chats < TEX_Bruja_2.size():
+				poner_texto(TEX_Bruja_2[chats], PERS.Bruja_3, IMA['Bruja'])
+				chats += 1
+			else: 
+				chats -= TEX_Bruja_2.size()
+				hide()
+				get_tree().paused = false
+				get_tree().change_scene_to_file("res://Escenas/Escena_Final/perder.tscn")
 
 

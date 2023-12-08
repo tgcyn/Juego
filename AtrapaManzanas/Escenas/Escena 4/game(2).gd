@@ -24,4 +24,8 @@ func _on_repetir_pressed():
 	get_tree().change_scene_to_file("res://Escenas/Escena 4/game(2).tscn")
 
 func _on_continuar_pressed():
-	print("pulse continuar")
+	if scoreJugador >= 10: # en caso de que consiga 10 o mas manzanas, gana
+		get_tree().change_scene_to_file("res://Escenas/Escena_Final/final.tscn")
+	else: # en caso de que consiga menos, pierde
+		get_tree().change_scene_to_file("res://Escenas/Escena_Final/final_perder.tscn")
+	

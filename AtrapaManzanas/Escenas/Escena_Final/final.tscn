@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdyf0qrabnwuo"]
+
+[ext_resource type="Texture2D" uid="uid://b1lx2gprxj5aa" path="res://Assets/Fondos/fondo_pasillo.webp" id="1_uh1tc"]
+[ext_resource type="Script" path="res://Escenas/Escena_Final/final.gd" id="1_ye77c"]
+[ext_resource type="PackedScene" uid="uid://cho8lfm61rw0v" path="res://Escenas/Escena1/bruja_inicio.tscn" id="2_7jcmu"]
+[ext_resource type="PackedScene" uid="uid://bdw1lkg06bajs" path="res://Escenas/Escena2/jugador.tscn" id="3_b454b"]
+[ext_resource type="Texture2D" uid="uid://bdqfnuirynm85" path="res://Assets/Objetos/cuadrado.png" id="5_egxle"]
+[ext_resource type="PackedScene" uid="uid://dce8jkd8abrhp" path="res://Escenas/Escena1/conversacion.tscn" id="6_bblsv"]
+[ext_resource type="PackedScene" uid="uid://ev6kgnx30y7g" path="res://Escenas/Escena_Final/ganar.tscn" id="7_fuqjf"]
+[ext_resource type="PackedScene" uid="uid://ch043axu6id23" path="res://Escenas/Escena_Final/perder.tscn" id="8_mgqfk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcwjp"]
+size = Vector2(661, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmms2"]
+size = Vector2(20, 374)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga35o"]
+size = Vector2(429.078, 100.909)
+
+[node name="final" type="Node"]
+script = ExtResource("1_ye77c")
+
+[node name="ganar" parent="." instance=ExtResource("7_fuqjf")]
+visible = false
+
+[node name="perder" parent="." instance=ExtResource("8_mgqfk")]
+visible = false
+
+[node name="FondoPasillo" type="Sprite2D" parent="."]
+position = Vector2(319, 181)
+scale = Vector2(1.07667, 1.08605)
+texture = ExtResource("1_uh1tc")
+
+[node name="Bruja" parent="." instance=ExtResource("2_7jcmu")]
+position = Vector2(-63, -1)
+
+[node name="jugador" parent="." instance=ExtResource("3_b454b")]
+position = Vector2(-121, 62)
+
+[node name="Bordes" type="Node" parent="."]
+
+[node name="Fondo" type="StaticBody2D" parent="Bordes"]
+scale = Vector2(1.01496, 1.01154)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Fondo"]
+position = Vector2(313, 323)
+shape = SubResource("RectangleShape2D_qcwjp")
+
+[node name="Techo" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Techo"]
+position = Vector2(317, 3)
+shape = SubResource("RectangleShape2D_qcwjp")
+
+[node name="Izquierda" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Izquierda"]
+position = Vector2(0, 177)
+shape = SubResource("RectangleShape2D_qmms2")
+
+[node name="Derecha" type="StaticBody2D" parent="Bordes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bordes/Derecha"]
+position = Vector2(640, 177)
+shape = SubResource("RectangleShape2D_qmms2")
+
+[node name="bruja_2" type="Area2D" parent="."]
+position = Vector2(129, 316)
+scale = Vector2(0.564, 0.066)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bruja_2"]
+position = Vector2(-3.54614, 40.4541)
+shape = SubResource("RectangleShape2D_ga35o")
+
+[node name="Cuadrado" type="Sprite2D" parent="bruja_2"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("5_egxle")
+
+[node name="Conversacion" parent="." instance=ExtResource("6_bblsv")]
+visible = false
+
+[connection signal="body_entered" from="bruja_2" to="Conversacion" method="_on_bruja_2_body_entered"]
