@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dh77o68tj6ij2" path="res://Escenas/PantallaInicio/parallax_background.tscn" id="1_j770d"]
 [ext_resource type="Script" path="res://Escenas/Escena_Final/ganar.gd" id="1_xygqe"]
-[ext_resource type="AudioStream" uid="uid://bfkipemka8ssl" path="res://Assets/Sonidos/Música relajante para cabezas vacías ᖗ^‿^ᖘ 【Música de Nintendo】 (1).mp3" id="3_f3h6w"]
+[ext_resource type="AudioStream" uid="uid://bniofmy8ge3pt" path="res://Assets/Sonidos/Música relajante para cabezas vacías.mp3" id="3_2ohhu"]
 
 [node name="ganar" type="CanvasLayer"]
 script = ExtResource("1_xygqe")
@@ -41,7 +41,7 @@ wait_time = 15.0
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_f3h6w")
+stream = ExtResource("3_2ohhu")
 autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
